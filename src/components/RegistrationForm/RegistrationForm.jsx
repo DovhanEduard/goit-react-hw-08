@@ -1,12 +1,14 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import css from '../ContactForm/ContactForm.module.css';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
+import { selectAuthError } from '../../redux/auth/selectors';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
+  const error = useSelector(selectAuthError);
 
   const INITIAL_VALUES = {
     name: '',
@@ -63,6 +65,7 @@ const RegisterForm = () => {
         <button className={css.contactBtn} type="submit">
           Зареєструватись
         </button>
+        {error && <p>Користувач з таким емейлом вже існує!</p>}
       </Form>
     </Formik>
   );

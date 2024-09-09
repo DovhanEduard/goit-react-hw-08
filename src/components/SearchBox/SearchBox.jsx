@@ -12,11 +12,11 @@ function SearchBox() {
 
     dispatch(changeFilter(searchValue));
   };
-  
+
   return (
     <div className={css.searchContainer}>
       <label className={css.searchLabel}>
-        <span>Find contacts by name</span>
+        <span>Знайти контакт за ім&apos;ям</span>
         <br />
         <input
           type="text"

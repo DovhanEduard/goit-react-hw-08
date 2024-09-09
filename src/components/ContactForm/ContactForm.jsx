@@ -51,7 +51,7 @@ function ContactForm() {
     >
       <Form className={css.contactForm}>
         <label className={css.contactLabel}>
-          <span className={css.contactLabelText}>Name: </span>
+          <span className={css.contactLabelText}>І&apos;мя: </span>
           <Field className={css.contactInput} type="text" name="username" />
           <ErrorMessage
             className={css.error}
@@ -60,7 +60,7 @@ function ContactForm() {
           />
         </label>
         <label className={css.contactLabel}>
-          <span className={css.contactLabelText}>Number: </span>
+          <span className={css.contactLabelText}>Номер: </span>
           <Field className={css.contactInput} type="text" name="phoneNumber" />
           <ErrorMessage
             className={css.error}
@@ -69,7 +69,7 @@ function ContactForm() {
           />
         </label>
         <button className={css.contactBtn} type="submit">
-          Add contact
+          Додати контакт
         </button>
       </Form>
     </Formik>
