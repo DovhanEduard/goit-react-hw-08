@@ -1,8 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import css from "./ContactForm.module.css"
+import css from './ContactForm.module.css';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsOps';
+import { addContact } from '../../redux/contacts/operations';
+import toast from 'react-hot-toast';
 
 function ContactForm() {
   const dispatch = useDispatch();
@@ -20,8 +21,8 @@ function ContactForm() {
       .matches(
         phoneRegExp,
         "Номер телефону має співпадати з форматом 'xxx-xx-xx'"
-      ).required('Required'),
-      
+      )
+      .required('Required'),
   });
 
   const handleSubmit = (values, actions) => {
@@ -30,8 +31,12 @@ function ContactForm() {
       number: values.phoneNumber,
     };
 
-    dispatch(addContact(finalContact));
-    
+    dispatch(addContact(finalContact))
+      .unwrap()
+      .then(() => {
+        toast.success('Контакт успішно доданий!');
+      });
+
     actions.resetForm();
   };
 
@@ -63,7 +68,9 @@ function ContactForm() {
             component="span"
           />
         </label>
-        <button className={css.contactBtn} type="submit">Add contact</button>
+        <button className={css.contactBtn} type="submit">
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
