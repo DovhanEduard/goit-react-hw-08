@@ -19,23 +19,24 @@ function App() {
   }, [dispatch]);
   return (
     <>
-      <Layout />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route
-          path="/register"
-          element={<RestrictedRoute component={<RegistrationPage />} />}
-        />
-        <Route
-          path="/login"
-          element={<RestrictedRoute component={<LoginPage />} />}
-        />
-        <Route
-          path="/contacts"
-          element={<PrivateRoute component={<ContactsPage />} />}
-        />
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/register"
+            element={<RestrictedRoute component={<RegistrationPage />} />}
+          />
+          <Route
+            path="/login"
+            element={<RestrictedRoute component={<LoginPage />} />}
+          />
+          <Route
+            path="/contacts"
+            element={<PrivateRoute component={<ContactsPage />} />}
+          />
+          {/* <Route path="*" element={<NotFoundPage />} /> */}
+        </Routes>
+      </Layout>
     </>
   );
 }
